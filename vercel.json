@@ -1,0 +1,6 @@
+{
+  "buildCommand": "npx expo export -p web && node scripts/finalize-web-dist.js",
+  "outputDirectory": "dist",
+  "framework": null,
+  "rewrites": [{ "source": "/:path*", "destination": "/index.html" }]
+}

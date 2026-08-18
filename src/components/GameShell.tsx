@@ -3,6 +3,7 @@ import { Pressable, ScrollView, Text, View } from "react-native";
 import { useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { PrimaryButton } from "@/src/components/PrimaryButton";
+import { SCREEN_FILL } from "@/src/constants/layout";
 import { COMPETENCY_META } from "@/src/utils/competency";
 import { HardwareKeySink } from "@/src/hooks/useHardwareKeys";
 import { useLayout } from "@/src/hooks/useLayout";
@@ -44,7 +45,7 @@ export function GameShell({
   const tip = liveTip ?? meta.tips[tipIndex] ?? meta.tips[0];
 
   return (
-    <SafeAreaView className="flex-1 bg-cream" edges={["top", "left", "right"]}>
+    <SafeAreaView className="flex-1 bg-cream" edges={["top", "left", "right"]} style={SCREEN_FILL}>
       {onHardwareKey ? <HardwareKeySink active={ready} onKey={onHardwareKey} /> : null}
       <View className="flex-1 self-center w-full px-5" style={{ maxWidth: contentMax }}>
         <View className="flex-row items-center justify-between pt-2 pb-2">

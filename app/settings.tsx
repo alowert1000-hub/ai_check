@@ -3,6 +3,7 @@ import { Pressable, Text, TextInput, View } from "react-native";
 import { useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { PrimaryButton } from "@/src/components/PrimaryButton";
+import { SCREEN_FILL } from "@/src/constants/layout";
 import { useLayout } from "@/src/hooks/useLayout";
 import { useSettingsStore } from "@/src/store/useSettingsStore";
 
@@ -21,7 +22,7 @@ export default function SettingsScreen() {
   }, [apiKey]);
 
   return (
-    <SafeAreaView className="flex-1 bg-cream">
+    <SafeAreaView className="flex-1 bg-cream" style={SCREEN_FILL}>
       <View className="flex-1 self-center w-full px-5" style={{ maxWidth: contentMax }}>
         <Pressable onPress={() => router.back()} className="mt-2 mb-4 self-start rounded-full bg-white px-3 py-2">
           <Text className="font-semibold text-ink">← 홈</Text>

@@ -14,7 +14,12 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.aicheck.practice"
+      "isTabletOnly": false,
+      "requireFullScreen": false,
+      "bundleIdentifier": "com.aicheck.practice",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -29,7 +34,18 @@
     "web": {
       "favicon": "./assets/favicon.png",
       "bundler": "metro",
-      "output": "static"
+      "output": "single",
+      "name": "역검연습",
+      "shortName": "역검연습",
+      "lang": "ko",
+      "description": "잡다 신역검 전략게임 9종을 아이폰·아이패드에서 연습하는 앱",
+      "themeColor": "#FFF6F0",
+      "backgroundColor": "#FFF6F0",
+      "display": "standalone",
+      "orientation": "any",
+      "startUrl": ".",
+      "barStyle": "default",
+      "preferRelatedApplications": false
     },
     "plugins": [
       "expo-router",

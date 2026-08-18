@@ -3,7 +3,9 @@ import { Pressable, ScrollView, Text, View } from "react-native";
 import { useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { CheeringModal } from "@/src/components/CheeringModal";
+import { InstallBanner } from "@/src/components/InstallBanner";
 import { GAMES, getGame } from "@/src/constants/games";
+import { SCREEN_FILL } from "@/src/constants/layout";
 import { useCheeringModal } from "@/src/hooks/useCheeringModal";
 import { useLayout } from "@/src/hooks/useLayout";
 import { useSessionStore } from "@/src/store/useSessionStore";
@@ -23,9 +25,10 @@ export default function HomeScreen() {
   }, [history]);
 
   return (
-    <SafeAreaView className="flex-1 bg-cream">
+    <SafeAreaView className="flex-1 bg-cream" style={SCREEN_FILL}>
       <ScrollView
         className="flex-1"
+        style={SCREEN_FILL}
         contentContainerStyle={{
           paddingHorizontal: 20,
           paddingBottom: 40,
@@ -53,6 +56,8 @@ export default function HomeScreen() {
             <Text className="text-lg">⚙️</Text>
           </Pressable>
         </View>
+
+        <InstallBanner />
 
         {history[0] ? (
           <View
