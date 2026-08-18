@@ -3,6 +3,7 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { PrimaryButton } from "@/src/components/PrimaryButton";
 import { getGame } from "@/src/constants/games";
+import { SCREEN_FILL } from "@/src/constants/layout";
 import { useLayout } from "@/src/hooks/useLayout";
 import { COMPETENCY_META } from "@/src/utils/competency";
 
@@ -14,7 +15,7 @@ export default function GuideScreen() {
 
   if (!meta) {
     return (
-      <SafeAreaView className="flex-1 bg-cream items-center justify-center px-6">
+      <SafeAreaView className="flex-1 bg-cream items-center justify-center px-6" style={SCREEN_FILL}>
         <Text className="font-bold text-ink">가이드를 찾지 못했어요</Text>
         <Pressable onPress={() => router.replace("/")} className="mt-3">
           <Text className="font-semibold text-ink">홈으로</Text>
@@ -24,7 +25,7 @@ export default function GuideScreen() {
   }
 
   return (
-    <SafeAreaView className="flex-1 bg-cream">
+    <SafeAreaView className="flex-1 bg-cream" style={SCREEN_FILL}>
       <ScrollView
         className="flex-1"
         contentContainerStyle={{

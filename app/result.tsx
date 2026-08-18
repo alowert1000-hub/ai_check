@@ -4,6 +4,7 @@ import { useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { PrimaryButton } from "@/src/components/PrimaryButton";
 import { getGame } from "@/src/constants/games";
+import { SCREEN_FILL } from "@/src/constants/layout";
 import { useLayout } from "@/src/hooks/useLayout";
 import { useSessionStore } from "@/src/store/useSessionStore";
 import { useSettingsStore } from "@/src/store/useSettingsStore";
@@ -38,7 +39,7 @@ export default function ResultScreen() {
 
   if (!last) {
     return (
-      <SafeAreaView className="flex-1 bg-cream items-center justify-center px-6">
+      <SafeAreaView className="flex-1 bg-cream items-center justify-center px-6" style={SCREEN_FILL}>
         <Text className="text-ink font-bold">아직 결과가 없어요</Text>
         <Pressable onPress={() => router.replace("/")} className="mt-4">
           <Text className="font-semibold text-ink">홈으로</Text>
@@ -52,7 +53,7 @@ export default function ResultScreen() {
   const learningDelta = Number(last.extra.learningDelta ?? 0);
 
   return (
-    <SafeAreaView className="flex-1 bg-cream">
+    <SafeAreaView className="flex-1 bg-cream" style={SCREEN_FILL}>
       <ScrollView
         className="flex-1"
         contentContainerStyle={{

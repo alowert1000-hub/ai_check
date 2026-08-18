@@ -36,7 +36,9 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "export:web": "expo export -p web && node scripts/finalize-web-dist.js",
+    "deploy:web": "GITHUB_PAGES=1 expo export -p web && GITHUB_PAGES=1 node scripts/finalize-web-dist.js"
   },
   "private": true,
   "overrides": {
