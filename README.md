@@ -39,7 +39,28 @@ EXPO_PUBLIC_OPENAI_MODEL=gpt-4o-mini
 | 숫자 누르기 | 점등 반응 + 두 번/건너뛰기 조건 |
 | 도형 순서 기억하기 | 2-back → 2/3-back 혼합 |
 | 고양이 술래잡기 | 위치 기억 + 확신도(메타인지) |
-| 개수 비교하기 | 점/수식 순간 비교 |
+| 개수 비교하기 | 단어/점 개수 순간 비교 |
+
+## 다른 컴퓨터에서 이어서 작업하기
+
+```bash
+git clone <저장소 URL>
+cd ai_check
+npm install
+cp .env.example .env   # Windows PowerShell: copy .env.example .env
+npx expo start
+```
+
+`node_modules/`, `.expo/`, `.env`는 커밋되지 않으므로 새 PC에서는 `npm install`을 먼저 실행해야 합니다.
+API 키는 저장소에 올라가지 않으니 새 PC에서는 앱의 ⚙️ 설정 화면이나 `.env`에 다시 넣어 주세요.
+
+작업을 마칠 때마다 아래로 백업합니다.
+
+```bash
+git add -A
+git commit -m "작업 내용"
+git push
+```
 
 ## 기술 스택
 
