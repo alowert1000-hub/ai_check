@@ -1,0 +1,38 @@
+{
+  "short_name": "역검연습",
+  "name": "역검연습 — AI 역량검사 전략게임",
+  "description": "잡다 신역검 전략게임 9종을 아이폰·아이패드에서 연습하는 앱",
+  "lang": "ko",
+  "dir": "ltr",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#FFF6F0",
+  "theme_color": "#FFF6F0",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "180x180",
+      "purpose": "any"
+    }
+  ]
+}
