@@ -31,6 +31,7 @@ yarn-error.*
 *.pem
 
 # local env files
+.env
 .env*.local
 
 # typescript
@@ -39,3 +40,11 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# IDE
+.idea/
+
+# 백서 원문 자료 (커밋 대상 아님)
+.hlab-pages/
+hlab-whitepaper.pdf
+hlab-extract.txt

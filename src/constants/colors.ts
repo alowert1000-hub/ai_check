@@ -1,0 +1,17 @@
+export const colors = {
+  cream: "#FFF6F0",
+  paper: "#FFFFFF",
+  blush: "#FFE4EC",
+  peach: "#FFD8C2",
+  mint: "#DFF6EE",
+  lilac: "#EDE4FF",
+  sky: "#E4F4FF",
+  lemon: "#FFF3C4",
+  ink: "#3D2C2E",
+  muted: "#8A6E72",
+  rose: "#F2789F",
+  coral: "#FF8B7B",
+  success: "#3CB98A",
+  danger: "#E85D5D",
+  overlay: "rgba(61, 44, 46, 0.45)",
+};
