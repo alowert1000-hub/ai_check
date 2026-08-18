@@ -5,7 +5,6 @@ import { GAME_MAP } from "@/src/constants/games";
 import { GameShell } from "@/src/components/GameShell";
 import {
   INGREDIENTS,
-  ingredientById,
   majorityColor,
   makePotionSequence,
   makePotionWorld,
@@ -147,17 +146,18 @@ export function PotionGame() {
             </View>
           ) : (
             <>
-              <View className="flex-row gap-3">
-                {combo.cards.map((id) => {
-                  const ing = ingredientById(id);
-                  return <Slot key={id} emoji={ing.emoji} name={ing.name} />;
-                })}
-                {Array.from({ length: 3 - combo.cards.length }, (_, i) => (
-                  <Slot key={`e${i}`} empty />
+              <View className="flex-row gap-2">
+                {INGREDIENTS.map((ing) => (
+                  <Card
+                    key={ing.id}
+                    emoji={ing.emoji}
+                    name={ing.name}
+                    faceUp={combo.cards.includes(ing.id)}
+                  />
                 ))}
               </View>
               <Text className="text-xs text-muted mt-3">
-                재료 4종 · 조합 14가지 중 {combo.cards.length}장 조합
+                카드 4장 중 {combo.cards.length}장이 들어간 조합 (전체 14가지)
               </Text>
             </>
           )}
@@ -199,20 +199,40 @@ export function PotionGame() {
   );
 }
 
-function Slot({ emoji, name, empty }: { emoji?: string; name?: string; empty?: boolean }) {
+/** 조합에 들어가는 카드는 앞면, 들어가지 않는 카드는 뒷면으로 제시된다. */
+function Card({ emoji, name, faceUp }: { emoji: string; name: string; faceUp: boolean }) {
+  if (!faceUp) {
+    return (
+      <View
+        className="items-center justify-center rounded-2xl"
+        style={{
+          width: 72,
+          height: 92,
+          backgroundColor: "#4C1D95",
+          borderWidth: 2,
+          borderColor: "#312E81",
+        }}
+      >
+        <Text style={{ fontSize: 26, color: "#C4B5FD" }}>✦</Text>
+        <Text className="text-[10px] mt-1 font-semibold" style={{ color: "#C4B5FD" }}>
+          미사용
+        </Text>
+      </View>
+    );
+  }
   return (
     <View
       className="items-center justify-center rounded-2xl"
       style={{
-        width: 76,
-        height: 88,
-        backgroundColor: empty ? "#F8FAFC" : "#ECFDF5",
-        borderWidth: 1,
-        borderColor: empty ? "#E2E8F0" : "#A7F3D0",
+        width: 72,
+        height: 92,
+        backgroundColor: "#ECFDF5",
+        borderWidth: 2,
+        borderColor: "#34D399",
       }}
     >
-      <Text className="text-3xl">{empty ? "" : emoji}</Text>
-      {name ? <Text className="text-[11px] text-ink mt-1 font-semibold">{name}</Text> : null}
+      <Text className="text-3xl">{emoji}</Text>
+      <Text className="text-[11px] text-ink mt-1 font-semibold">{name}</Text>
     </View>
   );
 }

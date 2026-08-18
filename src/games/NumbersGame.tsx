@@ -26,44 +26,25 @@ function Keypad({
   highlight,
   hit,
   onPress,
-  skipHint,
-  doubleHint,
-  progressCount,
 }: {
   layout: number[];
   highlight?: number | null;
   hit: Hit;
   onPress: (n: number) => void;
-  skipHint?: number[];
-  doubleHint?: number[];
-  progressCount?: Record<number, number>;
 }) {
-  const skip = new Set(skipHint ?? []);
-  const dbl = new Set(doubleHint ?? []);
   return (
     <View className="flex-row flex-wrap justify-center gap-2 mt-4">
       {layout.map((n) => {
         const active = highlight === n;
         const hitting = hit?.n === n;
-        const bg = hitting
-          ? hit!.ok
-            ? "#BBF7D0"
-            : "#FECACA"
-          : active
-            ? "#FDE68A"
-            : skip.has(n)
-              ? "#F1F5F9"
-              : "#FFFFFF";
+        const bg = hitting ? (hit!.ok ? "#BBF7D0" : "#FECACA") : active ? "#FDE68A" : "#FFFFFF";
         const border = hitting
           ? hit!.ok
             ? "#15803D"
             : "#B91C1C"
           : active
             ? "#B45309"
-            : dbl.has(n)
-              ? "#60A5FA"
-              : "#E7DDD8";
-        const done = progressCount?.[n] ?? 0;
+            : "#E7DDD8";
         return (
           <Pressable
             key={n}
@@ -81,12 +62,6 @@ function Keypad({
             <Text className="text-3xl font-bold" style={{ color: "#1F2937" }}>
               {n}
             </Text>
-            {dbl.has(n) ? (
-              <Text className="text-[10px] font-bold" style={{ color: "#1D4ED8" }}>
-                두 번{done ? ` (${done}/2)` : ""}
-              </Text>
-            ) : null}
-            {skip.has(n) ? <Text className="text-[10px] font-bold text-muted">건너뛰기</Text> : null}
           </Pressable>
         );
       })}
@@ -211,11 +186,6 @@ export function NumbersGame() {
     }
   }
 
-  const doneCount: Record<number, number> = {};
-  condition.expected.slice(0, ptr).forEach((n) => {
-    doneCount[n] = (doneCount[n] ?? 0) + 1;
-  });
-
   return (
     <GameShell
       meta={meta}
@@ -260,18 +230,10 @@ export function NumbersGame() {
           >
             <Text className="font-bold text-ink text-center">{condition.label}</Text>
             <Text className="text-center text-muted text-xs mt-1">
-              1부터 9까지 순서대로 · 다음에 누를 숫자{" "}
-              <Text className="font-bold text-ink">{condition.expected[ptr]}</Text>
+              1부터 9까지 순서대로, 규칙에 맞게 눌러 주세요
             </Text>
           </View>
-          <Keypad
-            layout={layout}
-            hit={hit}
-            onPress={onSeqTap}
-            skipHint={condition.skip}
-            doubleHint={condition.double}
-            progressCount={doneCount}
-          />
+          <Keypad layout={layout} hit={hit} onPress={onSeqTap} />
         </View>
       )}
     </GameShell>
