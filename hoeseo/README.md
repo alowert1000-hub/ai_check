@@ -38,3 +38,5 @@ REPORT_FROM_EMAIL=모의면접 <noreply@your-domain>
 | `/feedback` | 점수, 모범 답안, 문장 다듬기 |
 | `/report` | 하루 리포트 |
 | `/settings` | API 키, 메일, PWA 안내 |
+| `/bank` | 질문 은행 80문항 목록 |
+| `/bank/:id` | 준비된 답변, AI 2줄 요약, 주요 키워드 |

@@ -1,5 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { InterviewProvider } from "./context/InterviewContext.jsx";
+import { BankDetailPage } from "./pages/BankDetailPage.jsx";
+import { BankPage } from "./pages/BankPage.jsx";
 import { FeedbackPage } from "./pages/FeedbackPage.jsx";
 import { HomePage } from "./pages/HomePage.jsx";
 import { InterviewPage } from "./pages/InterviewPage.jsx";
@@ -15,6 +17,8 @@ export function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/resume" element={<ResumePage />} />
         <Route path="/mastery" element={<MasteryPage />} />
+        <Route path="/bank" element={<BankPage />} />
+        <Route path="/bank/:id" element={<BankDetailPage />} />
         <Route path="/interview" element={<InterviewPage />} />
         <Route path="/feedback" element={<FeedbackPage />} />
         <Route path="/report" element={<ReportPage />} />

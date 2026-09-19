@@ -72,6 +72,9 @@ export function MasteryPage() {
         </section>
         <div className="mt-8 space-y-3">
           <Button onClick={() => navigate("/interview")}>이 내용으로 면접 연습</Button>
+          <Button variant="secondary" onClick={() => navigate("/bank")}>
+            80문항 답변 보기
+          </Button>
           <Button variant="secondary" onClick={() => navigate("/resume")}>
             자기소개서 수정
           </Button>

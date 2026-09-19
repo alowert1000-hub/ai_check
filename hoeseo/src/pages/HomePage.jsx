@@ -35,6 +35,15 @@ export function HomePage() {
           </p>
         </header>
         <InstallTip />
+        <button
+          type="button"
+          onClick={() => navigate("/bank")}
+          className="mb-4 w-full rounded-2xl bg-white p-5 text-left shadow-[0_8px_24px_rgba(25,31,40,0.05)] transition-transform active:scale-[0.99]"
+        >
+          <p className="text-[12px] font-bold text-toss-blue">문제은행 답변</p>
+          <p className="mt-1 text-[17px] font-extrabold tracking-[-0.4px] text-toss-text">80문항 요약 · 키워드 · 답변</p>
+          <p className="mt-1 text-[14px] leading-relaxed text-toss-600">질문을 누르면 준비된 답변과 AI 2줄 요약을 확인할 수 있어요.</p>
+        </button>
         {briefing && (
           <BriefingCard
             briefing={briefing}
