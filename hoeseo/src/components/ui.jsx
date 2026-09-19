@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { dateKey, formatKoreanDate, formatKoreanTime } from "../lib/dates.js";
 import { dismissInstallTip, isInstallTipDismissed, normalizeFeedback, trackKeyOf, trackLabel } from "../lib/store.js";
-import { BackIcon, Chevron, HomeIcon, MasteryIcon, MicIcon, ReportIcon, SettingsIcon, StopIcon } from "./icons.jsx";
+import { BackIcon, BankIcon, Chevron, HomeIcon, MasteryIcon, MicIcon, ReportIcon, SettingsIcon, StopIcon } from "./icons.jsx";
 
 export function PhoneShell({ children, className = "" }) {
   return (
@@ -17,28 +17,30 @@ export function PhoneShell({ children, className = "" }) {
 const TABS = [
   { to: "/", label: "홈", icon: HomeIcon, end: true },
   { to: "/report", label: "리포트", icon: ReportIcon },
-  { to: "/mastery", label: "숙지", icon: MasteryIcon },
+  { to: "/bank", label: "답변", icon: BankIcon, match: (path) => path === "/bank" || path.startsWith("/bank/") },
+  { to: "/mastery", label: "숙지", icon: MasteryIcon, match: (path) => path === "/mastery" || path === "/resume" },
   { to: "/settings", label: "설정", icon: SettingsIcon },
 ];
 
 export function TabBar() {
   const { pathname } = useLocation();
   return (
-    <nav className="sticky bottom-0 z-20 border-t border-toss-200 bg-white/95 px-2 pt-2 backdrop-blur-md pb-[max(12px,env(safe-area-inset-bottom))]">
-      <ul className="grid grid-cols-4">
+    <nav className="sticky bottom-0 z-20 border-t border-toss-200 bg-white/95 px-1.5 pt-2 backdrop-blur-md pb-[max(12px,env(safe-area-inset-bottom))]">
+      <ul className="grid grid-cols-5">
         {TABS.map((tab) => (
           <li key={tab.to}>
             <NavLink
               to={tab.to}
               end={tab.end}
-              className={({ isActive }) =>
-                `flex flex-col items-center gap-1 py-1 text-[11px] font-semibold ${
-                  isActive || (tab.to === "/mastery" && pathname === "/resume") ? "text-toss-blue" : "text-toss-500"
-                }`
-              }
+              className={() => {
+                const active = tab.match ? tab.match(pathname) : pathname === tab.to || (tab.end && pathname === "/");
+                return `flex flex-col items-center gap-1 py-1 text-[11px] font-semibold ${
+                  active ? "text-toss-blue" : "text-toss-500"
+                }`;
+              }}
             >
-              {({ isActive }) => {
-                const active = isActive || (tab.to === "/mastery" && pathname === "/resume");
+              {() => {
+                const active = tab.match ? tab.match(pathname) : pathname === tab.to || (tab.end && pathname === "/");
                 return (
                   <>
                     <tab.icon active={active} />

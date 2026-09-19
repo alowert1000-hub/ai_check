@@ -34,6 +34,18 @@ export function SettingsIcon({ active }) {
   );
 }
 
+export function BankIcon({ active }) {
+  const color = active ? "#3182F6" : "#8B95A1";
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <circle cx="6.2" cy="7" r="1.35" fill={color} />
+      <circle cx="6.2" cy="12" r="1.35" fill={color} />
+      <circle cx="6.2" cy="17" r="1.35" fill={color} />
+      <path d="M10 7h8.2M10 12h8.2M10 17h5.5" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 export function MasteryIcon({ active }) {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
