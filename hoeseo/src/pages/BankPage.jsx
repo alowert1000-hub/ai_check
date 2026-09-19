@@ -50,8 +50,8 @@ export function BankPage() {
           className="mt-5 h-12 w-full rounded-2xl bg-white px-4 text-[15px] text-toss-text shadow-[0_8px_24px_rgba(25,31,40,0.05)] outline-none placeholder:text-toss-400"
         />
 
-        <div className="-mx-5 mt-4 overflow-x-auto px-5">
-          <div className="flex w-max gap-1.5">
+        <div className="mt-4">
+          <div className="flex flex-wrap gap-1.5">
             <button
               type="button"
               onClick={() => setCategory("all")}
